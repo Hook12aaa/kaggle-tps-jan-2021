@@ -1,0 +1,188 @@
+{
+  "input_data_hash": "sha256:fe0881e49af2020b17ca1af8bd4fbe865222b7e78cec583adf429348e50e26b2",
+  "features_py_hash": "sha256:0bfe4dc9ec1de334d74a71b440df8c80d93d9c0b8695623a122618f0ce6a6169",
+  "output_columns": [
+    "row_mean",
+    "row_std",
+    "row_min",
+    "row_max",
+    "row_range",
+    "row_median",
+    "row_sumsq",
+    "cont7_x_cont2",
+    "cont7_x_cont3",
+    "cont11_x_cont12",
+    "cont11_minus_cont12",
+    "cont11_div_cont12",
+    "cont11_plus_cont12",
+    "cont11_cont12_mean",
+    "cont1_x_cont3",
+    "cont2_x_cont6",
+    "cont9_sq"
+  ],
+  "categorical_columns": [],
+  "proposals": [
+    {
+      "name": "row_mean",
+      "source_columns": [
+        "cont1..cont14"
+      ],
+      "transformation": "row-wise mean of cont features",
+      "rationale": "global row magnitude summary; no single feature is predictive",
+      "expected_impact": "medium"
+    },
+    {
+      "name": "row_std",
+      "source_columns": [
+        "cont1..cont14"
+      ],
+      "transformation": "row-wise std",
+      "rationale": "joint dispersion across features",
+      "expected_impact": "medium"
+    },
+    {
+      "name": "row_min",
+      "source_columns": [
+        "cont1..cont14"
+      ],
+      "transformation": "row-wise min",
+      "rationale": "extreme-value regime boundary",
+      "expected_impact": "low"
+    },
+    {
+      "name": "row_max",
+      "source_columns": [
+        "cont1..cont14"
+      ],
+      "transformation": "row-wise max",
+      "rationale": "extreme-value regime boundary",
+      "expected_impact": "low"
+    },
+    {
+      "name": "row_range",
+      "source_columns": [
+        "cont1..cont14"
+      ],
+      "transformation": "max-min",
+      "rationale": "compressed spread, cheap split",
+      "expected_impact": "medium"
+    },
+    {
+      "name": "row_median",
+      "source_columns": [
+        "cont1..cont14"
+      ],
+      "transformation": "row-wise median",
+      "rationale": "robust central tendency",
+      "expected_impact": "low"
+    },
+    {
+      "name": "row_sumsq",
+      "source_columns": [
+        "cont1..cont14"
+      ],
+      "transformation": "sum of squares",
+      "rationale": "L2 energy, nonlinear magnitude",
+      "expected_impact": "medium"
+    },
+    {
+      "name": "cont7_x_cont2",
+      "source_columns": [
+        "cont7",
+        "cont2"
+      ],
+      "transformation": "product",
+      "rationale": "two strongest target correlates; interaction",
+      "expected_impact": "high"
+    },
+    {
+      "name": "cont7_x_cont3",
+      "source_columns": [
+        "cont7",
+        "cont3"
+      ],
+      "transformation": "product",
+      "rationale": "interaction with strongest correlate",
+      "expected_impact": "medium"
+    },
+    {
+      "name": "cont11_x_cont12",
+      "source_columns": [
+        "cont11",
+        "cont12"
+      ],
+      "transformation": "product",
+      "rationale": "most collinear pair interaction",
+      "expected_impact": "medium"
+    },
+    {
+      "name": "cont11_minus_cont12",
+      "source_columns": [
+        "cont11",
+        "cont12"
+      ],
+      "transformation": "difference",
+      "rationale": "decorrelated residual of collinear pair",
+      "expected_impact": "medium"
+    },
+    {
+      "name": "cont11_div_cont12",
+      "source_columns": [
+        "cont11",
+        "cont12"
+      ],
+      "transformation": "ratio with +1.5 offset",
+      "rationale": "relative scaling, bounded denominator",
+      "expected_impact": "medium"
+    },
+    {
+      "name": "cont11_plus_cont12",
+      "source_columns": [
+        "cont11",
+        "cont12"
+      ],
+      "transformation": "sum",
+      "rationale": "denoised common latent factor",
+      "expected_impact": "low"
+    },
+    {
+      "name": "cont11_cont12_mean",
+      "source_columns": [
+        "cont11",
+        "cont12"
+      ],
+      "transformation": "mean",
+      "rationale": "PC1 proxy of collinear cluster",
+      "expected_impact": "low"
+    },
+    {
+      "name": "cont1_x_cont3",
+      "source_columns": [
+        "cont1",
+        "cont3"
+      ],
+      "transformation": "product",
+      "rationale": "moderate-pair interaction",
+      "expected_impact": "low"
+    },
+    {
+      "name": "cont2_x_cont6",
+      "source_columns": [
+        "cont2",
+        "cont6"
+      ],
+      "transformation": "product",
+      "rationale": "moderate-pair interaction",
+      "expected_impact": "low"
+    },
+    {
+      "name": "cont9_sq",
+      "source_columns": [
+        "cont9"
+      ],
+      "transformation": "square",
+      "rationale": "curvature on most-skewed feature",
+      "expected_impact": "low"
+    }
+  ]
+}

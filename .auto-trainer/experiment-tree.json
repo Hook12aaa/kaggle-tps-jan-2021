@@ -1,0 +1,253 @@
+{
+  "primary_metric_key": "rmse",
+  "metric_direction": "minimize",
+  "nodes": {
+    "exp_000": {
+      "exp_id": "exp_000",
+      "parent": null,
+      "depth": 0,
+      "architecture_class": "linear",
+      "model": "Ridge",
+      "config_hash": "ab5a3136146ec7ea0e39f36c47c58ffe6dc22a3151db86fc519f33053ce2603b",
+      "sha": "0251032da2157de362b5e0622a0fc867b65e002348b5ec35baf2cd6f21edc5f9",
+      "status": "DONE",
+      "metrics": {
+        "rmse": 0.7215527142929965,
+        "mae": 0.6087303368713564,
+        "r2": 0.023750432692926093,
+        "train_rmse": 0.7250867634503952
+      },
+      "trainable_params": 32,
+      "eval_verdict": "BASELINE",
+      "worktree_path": ".auto-trainer/worktrees/exp_000/"
+    },
+    "exp_tree1": {
+      "exp_id": "exp_tree1",
+      "parent": "exp_000",
+      "depth": 1,
+      "architecture_class": "tree_based",
+      "model": "LGBMRegressor",
+      "config_hash": "a0b5d5342af56d131762b8d20fe1b2f0f2e41c3d9841bd5e697a881d3a1974b1",
+      "sha": "c901ebeeeb52f162bf78fcd88483f3ff9feaea200e4cbf01409bbc95c4952606",
+      "status": "DONE",
+      "metrics": {
+        "rmse": 0.699510134465838,
+        "mae": 0.5871849053429655,
+        "r2": 0.0824859006099461,
+        "train_rmse": 0.6894055465593427
+      },
+      "trainable_params": 9300,
+      "eval_verdict": "ACCEPT",
+      "review_verdict": "KEEP_WITH_CONCERNS",
+      "worktree_path": ".auto-trainer/worktrees/exp_tree1/"
+    },
+    "exp_nn1": {
+      "exp_id": "exp_nn1",
+      "parent": "exp_000",
+      "depth": 1,
+      "architecture_class": "neural_net",
+      "model": "MLPRegressor",
+      "config_hash": "b97e51b38d5166f5ed32aaac3db8bd5e8c2eca92d82cb1971931b62b32a56791",
+      "sha": "3b48af6e3f39f710cc1b5bffe0a6fd71458bac7a4f57dee2c509e3bf982cb76c",
+      "status": "DONE",
+      "metrics": {
+        "rmse": 0.7160913648530141,
+        "mae": 0.6013744720136236,
+        "r2": 0.03847274649660992,
+        "train_rmse": 0.7138543816275417
+      },
+      "trainable_params": 12417,
+      "eval_verdict": "REJECT",
+      "review_verdict": null,
+      "worktree_path": ".auto-trainer/worktrees/exp_nn1/"
+    },
+    "exp_lin1": {
+      "exp_id": "exp_lin1",
+      "parent": "exp_000",
+      "depth": 1,
+      "architecture_class": "linear",
+      "model": "Lasso",
+      "config_hash": "caa94936dc9448e290d2aa5f9593abfba399dfd7fe6abf546c16ad001c183a60",
+      "sha": "f46a246c0508bda5c7a3dc9ff6c68688dcc79a72768224505d1a31fb6899a816",
+      "status": "DONE",
+      "metrics": {
+        "rmse": 0.7218090247381928,
+        "mae": 0.6091176242168246,
+        "r2": 0.023056741439475892,
+        "train_rmse": 0.7253220837335718
+      },
+      "trainable_params": 32,
+      "eval_verdict": "INCONCLUSIVE",
+      "review_verdict": null,
+      "worktree_path": ".auto-trainer/worktrees/exp_lin1/"
+    },
+    "exp_tree2": {
+      "exp_id": "exp_tree2",
+      "parent": "exp_tree1",
+      "depth": 2,
+      "architecture_class": "tree_based",
+      "model": "LGBMRegressor",
+      "config_hash": "9692daebd63db6ac4594ff0cd0e56b34f667ee7e579d5ffbb7a837b4b1d51b26",
+      "sha": "759f0f4a09a6d9ed941c8d4bb4f0a97e961182e4111df97e619bda7d32f75241",
+      "status": "DONE",
+      "metrics": {
+        "rmse": 0.6992393049842548,
+        "mae": 0.5868651054493339,
+        "r2": 0.0831962313162663,
+        "train_rmse": 0.6897130242464032
+      },
+      "trainable_params": 9300,
+      "eval_verdict": "ACCEPT",
+      "review_verdict": "KEEP_WITH_CONCERNS",
+      "worktree_path": ".auto-trainer/worktrees/exp_tree2/"
+    },
+    "exp_lin2": {
+      "exp_id": "exp_lin2",
+      "parent": "exp_lin1",
+      "depth": 2,
+      "architecture_class": "linear",
+      "model": "ElasticNet",
+      "config_hash": "1bc4150ae5ba14a6a76c98bd6f8667f51807615d968d644a0553af19a5ccfa98",
+      "sha": "c07baff550854e0804f4df303ea32fa22be8d8df0ca11d3b850c1d3182dc3c9d",
+      "status": "DONE",
+      "metrics": {
+        "rmse": 0.721688256957587,
+        "mae": 0.6089252486971223,
+        "r2": 0.023383624022054073,
+        "train_rmse": 0.7252033146671742
+      },
+      "trainable_params": 32,
+      "eval_verdict": "INCONCLUSIVE",
+      "review_verdict": null,
+      "worktree_path": ".auto-trainer/worktrees/exp_lin2/"
+    },
+    "exp_tree3": {
+      "exp_id": "exp_tree3",
+      "parent": "exp_tree2",
+      "depth": 3,
+      "architecture_class": "tree_based",
+      "model": "LGBMRegressor",
+      "config_hash": "3e707c633be2c8d242569f9a0423029a230ca958c3c318f42ca232ad6d48646b",
+      "sha": "7554da0ea4ea5bc8c4661722fbccb8606321684de6ddf790ede24aefca0c3370",
+      "status": "DONE",
+      "metrics": {
+        "rmse": 0.6990120523468016,
+        "mae": 0.5867420410005185,
+        "r2": 0.08379205657024935,
+        "train_rmse": 0.6901234904448377
+      },
+      "trainable_params": 9300,
+      "eval_verdict": "ACCEPT",
+      "review_verdict": "KEEP_WITH_CONCERNS",
+      "worktree_path": ".auto-trainer/worktrees/exp_tree3/"
+    },
+    "exp_lin3": {
+      "exp_id": "exp_lin3",
+      "parent": "exp_lin2",
+      "depth": 3,
+      "architecture_class": "linear",
+      "model": "Ridge",
+      "config_hash": "021f2386eb853abb738be3be536160a27cee9d89f441a808bec377fba4d5e9b5",
+      "sha": "91b840a66bb373cf1c369ce58ead6418a13cc517558ca86d78cdc7c1fbc2fa77",
+      "status": "DONE",
+      "metrics": {
+        "rmse": 0.7216069551633714,
+        "mae": 0.6087621209514112,
+        "r2": 0.023603653073159925,
+        "train_rmse": 0.7251501877744734
+      },
+      "trainable_params": 32,
+      "eval_verdict": "INCONCLUSIVE",
+      "review_verdict": null,
+      "worktree_path": ".auto-trainer/worktrees/exp_lin3/"
+    },
+    "exp_ensemble": {
+      "exp_id": "exp_ensemble",
+      "parent": "exp_tree3",
+      "depth": 4,
+      "architecture_class": "ensemble",
+      "model": "CaruanaBlend",
+      "config_hash": "3d4da7c687334c6a4a6dd335c2a0cce3ebf343e3da4f85dcc333bc659d298940",
+      "sha": "776816cb48730cde9918b1bcd4c10fcf6d77d6ce20cebccf338d2463877acdbb",
+      "status": "ENSEMBLE",
+      "metrics": {
+        "rmse": 0.6990120523468016,
+        "mae": 0.5867420410005185,
+        "r2": 0.08379205657024935,
+        "train_rmse": 0.6990120523468016
+      },
+      "trainable_params": 9300,
+      "eval_verdict": "ACCEPT",
+      "ensemble_beats_best_single": false,
+      "ensemble_selected": [
+        {
+          "exp_id": "exp_tree3",
+          "weight": 1.0
+        }
+      ],
+      "worktree_path": ".auto-trainer/worktrees/exp_ensemble/",
+      "ensemble_result": "DONE_WITH_CONCERNS"
+    }
+  },
+  "pareto_front": [
+    "exp_000",
+    "exp_tree3"
+  ],
+  "pareto_history": [
+    [
+      "exp_000"
+    ],
+    [
+      "exp_000",
+      "exp_tree1"
+    ],
+    [
+      "exp_000",
+      "exp_tree2"
+    ],
+    [
+      "exp_000",
+      "exp_tree3"
+    ],
+    [
+      "exp_000",
+      "exp_tree3"
+    ],
+    [
+      "exp_000",
+      "exp_tree3"
+    ]
+  ],
+  "class_status": {
+    "ensemble": {
+      "status": "UNTRIED",
+      "best": null,
+      "depth": 0
+    },
+    "linear": {
+      "status": "EXHAUSTED",
+      "best": 0.7215527142929965,
+      "depth": 3
+    },
+    "neural_net": {
+      "status": "EXHAUSTED",
+      "best": 0.7160913648530141,
+      "depth": 1
+    },
+    "tree_based": {
+      "status": "EXHAUSTED",
+      "best": 0.6990120523468016,
+      "depth": 3
+    }
+  },
+  "global_status": "CONVERGED",
+  "winner": "exp_tree3",
+  "ensemble_summary": {
+    "status": "DONE_WITH_CONCERNS",
+    "reason": "blend ties best single (Caruana selected only exp_tree3 @ weight 1.0); linear member did not improve the blend",
+    "best_single": "exp_tree3",
+    "best_single_rmse": 0.6990120523468016,
+    "ensemble_rmse": 0.6990120523468016,
+    "beats_best_single": false
+  }
+}

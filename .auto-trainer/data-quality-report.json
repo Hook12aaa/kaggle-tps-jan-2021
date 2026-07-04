@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "dataset_path": "./train.csv",
+  "dataset_mtime": 1607649586.0,
+  "timestamp": "2026-06-28T14:30:05Z",
+  "mitigation_rounds": 0,
+  "domain_context": {
+    "inferred_domain": "Synthetic tabular regression (Kaggle TPS Jan 2021), CTGAN-style generated from an undisclosed real source; anonymized continuous features cont1..cont14, near-normal continuous target scored by RMSE. Practical domain: generic anonymized continuous regression.",
+    "column_semantics": {
+      "id": "Non-predictive sequential row identifier; carries no signal, drop before modeling.",
+      "cont1": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20] (Gaussianized by generator).",
+      "cont2": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20]; among strongest (still weak |r|~0.067) linear correlates of target.",
+      "cont3": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20].",
+      "cont4": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20].",
+      "cont5": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20].",
+      "cont6": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20].",
+      "cont7": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20]; single highest (|r|~0.067) linear correlation with target.",
+      "cont8": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20].",
+      "cont9": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20]; highest skew (~0.80).",
+      "cont10": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20].",
+      "cont11": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20]; part of strongest correlated cluster (max pairwise r~0.826).",
+      "cont12": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20]; part of strongest correlated cluster (max pairwise r~0.826).",
+      "cont13": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20].",
+      "cont14": "Anonymized continuous predictor, pre-scaled ~[-0.24,1.20].",
+      "target": "Continuous regression label, near-normal (range [0,10.27], mean 7.906, std 0.733, skew -0.08); scored by RMSE (lower better)."
+    },
+    "known_relationships": [
+      "Linear feature-target correlations are essentially zero (max |Pearson|~0.067), so signal lives in non-linear interactions among cont features.",
+      "Some cont features are collinear (max feature-feature r~0.826) forming redundant clusters trees handle natively but that destabilize linear models.",
+      "Model hierarchy: linear/ridge floor ~0.726 RMSE; gradient-boosted trees (LightGBM/XGBoost/CatBoost) reach ~0.696; NNs competitive; blends of diverse non-linear learners win.",
+      "Features appear pre-Gaussianized, so extra scaling barely affects trees; gains come from interaction/aggregate features, not raw transforms."
+    ],
+    "external_data_candidates": [],
+    "leakage_risks": []
+  },
+  "checks": {
+    "shape_and_size": {
+      "passed": true,
+      "samples": 300000,
+      "features": 14,
+      "samples_per_feature": 21428.57
+    },
+    "data_types": {
+      "passed": true,
+      "columns_checked": 16,
+      "coercion_failures": {},
+      "max_coercion_failure_rate": 0.0
+    },
+    "missing_values": {
+      "passed": true,
+      "columns_with_missing": 0,
+      "mitigations_applied": {}
+    },
+    "target_variable": {
+      "passed": true,
+      "name": "target",
+      "dtype": "float64",
+      "missing_pct": 0.0,
+      "variance": 0.5373928423339634
+    },
+    "duplicates": {
+      "passed": true,
+      "duplicate_rows": 0,
+      "duplicate_pct": 0.0
+    },
+    "distributions": {
+      "passed": true,
+      "high_skew_columns": [],
+      "zero_variance_columns": [],
+      "near_constant_columns": []
+    },
+    "correlations": {
+      "passed": true,
+      "redundant_pairs": [],
+      "leakage_suspects": [],
+      "high_vif_columns": []
+    },
+    "outliers": {
+      "passed": true,
+      "flagged_rows": 31,
+      "flagged_pct": 0.01
+    }
+  }
+}

@@ -1,0 +1,15 @@
+dataset:
+  train: ./train.csv
+  test: ./test.csv
+  target_column: target
+
+competition:
+  metric: rmse
+  metric_direction: minimize
+  submission_format:
+    id_column: id
+    prediction_column: target
+
+constraints:
+  max_iterations: 15
+  architecture_classes_minimum: 3

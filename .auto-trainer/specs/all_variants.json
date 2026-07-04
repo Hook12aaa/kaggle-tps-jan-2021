@@ -1,0 +1,121 @@
+{
+  "exp_tree1": {
+    "architecture_class": "tree_based",
+    "model": "LGBMRegressor",
+    "model_type": "lightgbm",
+    "hyperparameters": {
+      "n_estimators": 300,
+      "num_leaves": 31,
+      "learning_rate": 0.05
+    },
+    "parent": "exp_000",
+    "depth": 1,
+    "config_delta": {
+      "model_type": "lightgbm"
+    },
+    "hypothesis": "Gradient-boosted trees capture the non-linear interactions where this dataset's signal lives (linear |r|~0.07); expected to beat the 0.7216 linear floor."
+  },
+  "exp_nn1": {
+    "architecture_class": "neural_net",
+    "model": "MLPRegressor",
+    "model_type": "mlp",
+    "hyperparameters": {
+      "hidden_layer_sizes": [
+        128,
+        64
+      ],
+      "max_iter": 60,
+      "early_stopping": true,
+      "n_iter_no_change": 6,
+      "alpha": 0.001,
+      "learning_rate_init": 0.005,
+      "batch_size": 1024
+    },
+    "parent": "exp_000",
+    "depth": 1,
+    "config_delta": {
+      "model_type": "mlp"
+    },
+    "hypothesis": "A 2-layer MLP can learn smooth non-linear interactions on the standardized engineered features; tests whether NN beats trees on this synthetic data."
+  },
+  "exp_lin1": {
+    "architecture_class": "linear",
+    "model": "Lasso",
+    "model_type": "lasso",
+    "hyperparameters": {
+      "alpha": 0.001,
+      "max_iter": 3000
+    },
+    "parent": "exp_000",
+    "depth": 1,
+    "config_delta": {
+      "model_type": "lasso"
+    },
+    "hypothesis": "L1 sparsity may prune redundant collinear features (cont11/cont12 cluster) from the linear floor."
+  },
+  "exp_tree2": {
+    "architecture_class": "tree_based",
+    "model": "LGBMRegressor",
+    "model_type": "lightgbm",
+    "hyperparameters": {
+      "n_estimators": 300,
+      "num_leaves": 31,
+      "learning_rate": 0.05,
+      "min_child_samples": 80
+    },
+    "parent": "exp_tree1",
+    "depth": 2,
+    "config_delta": {
+      "min_child_samples": 80
+    },
+    "hypothesis": "Larger min_child_samples regularizes leaf estimates to reduce variance on 240k rows; small expected gain over exp_tree1."
+  },
+  "exp_lin2": {
+    "architecture_class": "linear",
+    "model": "ElasticNet",
+    "model_type": "elasticnet",
+    "hyperparameters": {
+      "alpha": 0.001,
+      "l1_ratio": 0.5,
+      "max_iter": 3000
+    },
+    "parent": "exp_lin1",
+    "depth": 2,
+    "config_delta": {
+      "model_type": "elasticnet"
+    },
+    "hypothesis": "Blend L1/L2 to balance sparsity and shrinkage; tests the last meaningful linear lever before the class exhausts."
+  },
+  "exp_tree3": {
+    "architecture_class": "tree_based",
+    "model": "LGBMRegressor",
+    "model_type": "lightgbm",
+    "hyperparameters": {
+      "n_estimators": 300,
+      "num_leaves": 31,
+      "learning_rate": 0.05,
+      "min_child_samples": 80,
+      "feature_fraction": 0.7
+    },
+    "parent": "exp_tree2",
+    "depth": 3,
+    "config_delta": {
+      "feature_fraction": 0.7
+    },
+    "hypothesis": "Column subsampling decorrelates trees for a small additional gain; expected <1% improvement signalling tree-class diminishing returns."
+  },
+  "exp_lin3": {
+    "architecture_class": "linear",
+    "model": "Ridge",
+    "model_type": "ridge",
+    "hyperparameters": {
+      "alpha": 1000.0
+    },
+    "parent": "exp_lin2",
+    "depth": 3,
+    "config_delta": {
+      "alpha": 1000.0
+    },
+    "hypothesis": "Heavy L2 shrinkage (alpha=1000) on the exhausted linear class; clearly underperforms the baseline, confirming no linear headroom (stability-confirming variant)."
+  }
+}

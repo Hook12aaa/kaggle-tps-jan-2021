@@ -1,0 +1,11 @@
+[
+  {
+    "parent_id": "exp_lin2",
+    "architecture_class": "linear",
+    "config_delta": {
+      "alpha": 1000.0
+    },
+    "hypothesis": "Heavy L2 shrinkage (alpha=1000) on the exhausted linear class; clearly underperforms the baseline, confirming no linear headroom (stability-confirming variant).",
+    "exp_id": "exp_lin3"
+  }
+]

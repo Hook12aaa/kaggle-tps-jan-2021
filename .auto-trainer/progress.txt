@@ -1,0 +1,3 @@
+progress
+14:44:55 baseline exp_000 DONE rmse=0.72155 params=32
+15:09:19 CONVERGED winner=exp_tree3 rmse=0.69901 (-3.12% vs baseline); ensemble tied; report+submission written

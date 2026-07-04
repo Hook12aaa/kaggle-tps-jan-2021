@@ -1,0 +1,10 @@
+{
+  "primary": "rmse",
+  "primary_type": "lower_better",
+  "metrics": [
+    {"name": "rmse", "type": "lower_better"},
+    {"name": "mae", "type": "lower_better"},
+    {"name": "r2", "type": "higher_better"}
+  ],
+  "extract_command": "/Users/hook/miniforge3/bin/python -c \"import json;print(json.dumps(json.load(open('metrics.json'))))\""
+}
