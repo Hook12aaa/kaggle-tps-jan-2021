@@ -1,8 +1,8 @@
 # Kaggle Tabular Playground Series -- January 2021
 
-This is an autonomous run by my [auto-model-trainer](https://github.com/Hook12aaa/auto-model-trainer) plugin. I pointed it at the objective file and let it explore on its own. It worked through 3 architecture classes -- linear, tree_based, and neural_net -- across 8 experiments before converging on a winner.
+This solution was created by [auto-model-trainer](https://github.com/Hook12aaa/auto-model-trainer), a Claude Code plugin for autonomous ML training. Given the competition objective, it worked through 3 architecture classes -- linear, tree_based, and neural_net -- across 8 experiments before converging on a winner.
 
-The dataset is synthetic, generated with CTGAN, and it shows: there's almost no linear signal in the raw features (the strongest correlation with the target is only about |r| ~0.067). All the useful structure lives in non-linear interactions between features. That's exactly why LightGBM pulled away from the pack. On top of the 14 raw features I added 17 engineered ones -- row-level aggregates and interaction terms -- to give the tree models more to work with.
+The dataset is synthetic, generated with CTGAN, and it shows: there's almost no linear signal in the raw features (the strongest correlation with the target is only about |r| ~0.067). All the useful structure lives in non-linear interactions between features. That's exactly why LightGBM pulled away from the pack. The plugin engineered 17 features on top of the 14 raw ones -- row-level aggregates and interaction terms -- to give the tree models more to work with.
 
 ## Competition
 
@@ -35,7 +35,7 @@ The ensemble step ended up identical to the best single model, since LightGBM do
 ## Project Structure
 
 ```
-objective.yaml      the objective I handed to auto-model-trainer
+objective.yaml      competition objective given to auto-model-trainer
 features.py          the 17 engineered features (row aggregates + interactions)
 final-report.md      the full autonomous run report
 submission.csv       the winning submission (exp_tree3)
@@ -44,7 +44,7 @@ submission.csv       the winning submission (exp_tree3)
 
 ## Usage
 
-This was produced with my auto-model-trainer plugin. To reproduce:
+Created by the [auto-model-trainer](https://github.com/Hook12aaa/auto-model-trainer) plugin. To reproduce:
 
 ```
 /auto-train objective.yaml
